@@ -13,10 +13,10 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 
 	}
-
-	@Bean   //model mapper should inject as Bean type
-	public ModelMapper modelMapper(){
-		return new ModelMapper();
-	}
+//
+//	@Bean   //model mapper should inject as Bean type
+//	public ModelMapper modelMapper(){
+//		return new ModelMapper();
+//	}
 
 }
