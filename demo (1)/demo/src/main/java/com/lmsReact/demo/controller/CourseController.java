@@ -5,9 +5,9 @@ import com.lmsReact.demo.entity.Course;
 import com.lmsReact.demo.exception.ResourceNotFoundException;
 import com.lmsReact.demo.repo.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +22,10 @@ public class CourseController {
     @Autowired
     private CourseRepo courseRepo;
 
+
     @GetMapping
-    public List<Course> getCourse() {
+//    @Query(value = "SELECT c FROM Course c WHERE c.lecture_id='test'")
+    public List<Course> getCourses() {                    //getCourses
 
         return courseRepo.findAll();
     }
@@ -41,6 +43,8 @@ public class CourseController {
                 .orElseThrow(() ->new ResourceNotFoundException("Course id doesnt exist"));
         return  ResponseEntity.ok(course);
     }
+
+
 
     //update courses
     //IN HERE WE USE ALL GETTERS AND SETTERS
@@ -71,32 +75,17 @@ public class CourseController {
 
     }
 
+    //Sorting
+    @GetMapping("/findByLecture/{lecture_id}")
+    public List<Course> newMeth(@PathVariable String lecture_id){
+        return courseRepo.findByLecture_id(lecture_id);
+    }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    saving a course to the databse
+    //    saving a course to the databse
 
 //    @PostMapping("/saveCourses")
 //    public CourseDTO saveCourse(@RequestBody CourseDTO courseDTO) {

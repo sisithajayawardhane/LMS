@@ -7,6 +7,7 @@ import com.lmsReact.demo.exception.ResourceNotFoundException;
 import com.lmsReact.demo.repo.CourseRepo;
 import com.lmsReact.demo.repo.MarksRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
